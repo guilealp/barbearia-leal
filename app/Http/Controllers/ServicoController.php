@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServicoFormRequest;
 use App\Models\Servico;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class ServicoController extends Controller
 {
@@ -41,7 +40,7 @@ class ServicoController extends Controller
             'message' => "Não há resultados para pesquisar"
         ]);
     }
-    public function ExibirTodosServico()
+    public function exibirTodosServico()
     {
         $usuario = Servico::all();
         return response()->json([
@@ -49,7 +48,7 @@ class ServicoController extends Controller
             'data' => $usuario
         ]);
     }
-    public function editar(Request $request)
+    public function editarServiço(Request $request)
     {
         $usuario = Servico::find($request->id);
 
