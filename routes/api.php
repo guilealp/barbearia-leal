@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,21 @@ route::post('find/cliente',[ClienteController::class, 'procurarPorCelular']);
 route::post('find/cliente',[ClienteController::class, 'procurarPorEmail']);
 
 route::post('recuperar/senha',[ClienteController::class, 'recuperarSenha']);
+
+//profissional
+
+route::post('profissional',[ProfissionalController::class, 'criarProfissional']);
+
+route::post('find/profissional',[ProfissionalController::class, 'procurarPorNomeProfissional']);
+
+route::post('find/profissional',[ProfissionalController::class, 'procurarPorCpfProfissional']);
+
+route::post('find/profissional',[ProfissionalController::class, 'procurarPorCelularProfissional']);
+
+route::post('find/profissional',[ProfissionalController::class, 'procurarPorEmailProfissional']);
+
+route::post('Profissional/all',[ProfissionalController::class, 'exibirTodosProfissional']);
+
+route::post('editar/Profissional',[ProfissionalController::class, 'editarProfissional']);
+
+Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluirProfissional']);

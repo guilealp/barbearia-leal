@@ -40,7 +40,8 @@ class ClienteFormRequest extends FormRequest
             'password' => 'required'
         ];
     }
-    public function failedValidation(Validator $validator){
+    public function failedValidation(Validator $validator)
+    {
         throw new HttpResponseException(response()->json([
             'success' => false,
             'error' => $validator->errors()
@@ -48,7 +49,7 @@ class ClienteFormRequest extends FormRequest
     }
     public function messages()
     {
-        return[
+        return [
             'nome.required' => 'O campo nome é obrigatorio',
             'nome.max' => 'O campo nome deve conter no maximo 120 caracteres',
             'nome.min' => 'O campo nome deve conter no minimo 5 caracteres',
@@ -68,22 +69,22 @@ class ClienteFormRequest extends FormRequest
             'cidade.required' => 'O campo cidade é obrigatorio',
             'cidade.max' => 'O campo cidade deve conter no maximo 120 caracteres',
             'estado.required' => 'O campo estado é obrigatorio',
-            'estado.max'=> 'O campo estado deve conter no maximo 2 caracteres',
+            'estado.max' => 'O campo estado deve conter no maximo 2 caracteres',
             'estado.min' => 'O campo estado deve conter no minimo 2 caractesres',
             'pais.required' => 'O campo pais é obrigatorio',
             'pais.max' => 'o campo pais deve conter no maximo 80 caracteres',
-            'rua.required'=>'O campo rua é obrigatorio',
+            'rua.required' => 'O campo rua é obrigatorio',
             'rua.max' => 'O campo rua deve conter no maximo 120 caracteres',
             'numero.required' => 'O campo numero é obrigatorio',
             'numero.max' => 'O campo numero deve conter no maximo 10 caracteres',
             'bairro.required' => 'O campo bairro é obrigatorio',
-            'bairro.max'=> 'o campo bairro deve conter no maximo 100 caracteres',
-            'cep.required'=> 'O campo CEP é obrigatorio',
+            'bairro.max' => 'o campo bairro deve conter no maximo 100 caracteres',
+            'cep.required' => 'O campo CEP é obrigatorio',
             'cep.max' => 'O campo CEp deve conter no maximo 8 caracteres',
             'cep.min' => 'O campo CEP deve conter no maximo 8 caracteres',
-            'complemeto.required'=> 'complemeto é obrigatorio',
+            'complemeto.required' => 'complemeto é obrigatorio',
             'complemeto.max' => 'O campo complemeto deve conter 150 caracteres',
-            'password.required'=> 'password é obrigatorio'
+            'password.required' => 'password é obrigatorio'
 
         ];
     }

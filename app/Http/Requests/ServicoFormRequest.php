@@ -40,7 +40,7 @@ class ServicoFormRequest extends FormRequest
     }
     public function messages()
     {
-        return[
+        return [
             'nome.required' => 'O campo nome é obrigatorio',
             'nome.max' => 'O campo nome deve conter no maximo 80 caracteres',
             'nome.min' => 'O campo nome deve conter no minimo 5 caracteres',
@@ -53,7 +53,7 @@ class ServicoFormRequest extends FormRequest
             'preco.required' => 'preço obrigatoria',
             'preco.decimal' => 'O formato de preço é invalido'
 
-            
+
         ];
     }
 }
