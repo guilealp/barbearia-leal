@@ -191,11 +191,8 @@ class ClienteController extends Controller
                 'massage' => "Cliente não encontrado"
             ]);
         }
-        if (isset($request->password)){
-            $clientes->password = $request->password;
-        }
-
-        $clientes->update();
+        
+        $clientes->update(['password'=>$request->password]);
         return response()->json([
             'status' => true,
             'message' => "Senha atualizado"

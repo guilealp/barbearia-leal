@@ -29,13 +29,13 @@ Route::delete('serviço/excluir/{id}',[ServicoController::class, 'excluir']);
 //clientes
 route::post('cliente',[ClienteController::class,'clienteCreate']);
 
-route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
-
 route::post('cliente/all',[ClienteController::class, 'exibirTodosClientes']);
 
 route::post('editar/cliente',[ClienteController::class, 'editarCliente']);
 
 Route::delete('cliente/excluir/{id}',[ClienteController::class, 'excluirCliente']);
+
+route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
 
 route::post('find/cliente',[ClienteController::class, 'procurarPorCpf']);
 
