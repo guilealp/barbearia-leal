@@ -102,7 +102,7 @@ class ProfissionalController extends Controller
             'message' => "Não há resultados para pesquisar"
         ]);
     }
-    public function exibirTodosProfissionals()
+    public function exibirTodosProfissional()
     {
         $profissionals = Profissional::all();
         return response()->json([
