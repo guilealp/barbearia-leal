@@ -9,10 +9,10 @@ class Agenda extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'profissional-id',
-        'cliente-id',
-        'servico-id',
-        'data-hora',
+        'profissional_id',
+        'cliente_id',
+        'servico_id',
+        'data_hora',
         'pagamento',
         'valor'
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
@@ -63,3 +64,7 @@ route::post('Profissional/all',[ProfissionalController::class, 'exibirTodosProfi
 route::post('editar/Profissional',[ProfissionalController::class, 'editarProfissional']);
 
 Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluirProfissional']);
+
+//Agenda
+
+route::post( 'Agenda',[AgendaController::class , 'CadastroAgenda']);
