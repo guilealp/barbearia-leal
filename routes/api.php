@@ -22,20 +22,23 @@ route::post('servico',[ServicoController::class,'servicoCreate']);
 
 route::post('find/serviço',[ServicoController::class,'pesquisarPorNome']);
 
-route::post('serviço/all',[ServicoController::class,'exibirTodosServico']);
+route::get('serviço/all',[ServicoController::class,'exibirTodosServico']);
 
-route::post('editar',[ServicoController::class,'editar']);
+route::put('editar',[ServicoController::class,'editar']);
 
 Route::delete('serviço/excluir/{id}',[ServicoController::class, 'excluir']);
 
+route::post('find/serviço/{id}',[ServicoController::class, 'pesquisarPorId']);
 //clientes
 route::post('cliente',[ClienteController::class,'clienteCreate']);
 
-route::post('cliente/all',[ClienteController::class, 'exibirTodosClientes']);
+route::get('cliente/all',[ClienteController::class, 'exibirTodosClientes']);
 
-route::post('editar/cliente',[ClienteController::class, 'editarCliente']);
+route::put('editar/cliente',[ClienteController::class, 'editarCliente']);
 
 Route::delete('cliente/excluir/{id}',[ClienteController::class, 'excluirCliente']);
+
+route::post('find/cliente/{id}',[ClienteController::class, 'pesquisarPorId']);
 
 route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
 
@@ -53,15 +56,17 @@ route::post('profissional',[ProfissionalController::class, 'criarProfissional'])
 
 route::post('find/profissional',[ProfissionalController::class, 'procurarPorNomeProfissional']);
 
+route::post('find/profissional/{id}',[ProfissionalController::class, 'pesquisarPorId']);
+
 route::post('find/profissional',[ProfissionalController::class, 'procurarPorCpfProfissional']);
 
 route::post('find/profissional',[ProfissionalController::class, 'procurarPorCelularProfissional']);
 
 route::post('find/profissional',[ProfissionalController::class, 'procurarPorEmailProfissional']);
 
-route::post('Profissional/all',[ProfissionalController::class, 'exibirTodosProfissional']);
+route::get('Profissional/all',[ProfissionalController::class, 'exibirTodosProfissional']);
 
-route::post('editar/Profissional',[ProfissionalController::class, 'editarProfissional']);
+route::put('editar/Profissional',[ProfissionalController::class, 'editarProfissional']);
 
 Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluirProfissional']);
 

@@ -190,4 +190,18 @@ class ProfissionalController extends Controller
             'message' => "Profissional excluido com sucesso"
         ]);
     }
+    public function pesquisarPorId($id){
+        $profissionals = Profissional::find($id);
+        if($profissionals == null){
+            return response()->json([
+                'status'=>false,
+                'message'=> "profissional não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status'=>true,
+            'data'=> $profissionals
+        ]);
+
+        } 
 }

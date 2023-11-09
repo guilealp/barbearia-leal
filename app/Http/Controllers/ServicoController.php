@@ -12,7 +12,7 @@ class ServicoController extends Controller
     {
 
 
-        $usuario = Servico::create([
+        $servico = Servico::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
             'duracao' => $request->duracao,
@@ -20,17 +20,17 @@ class ServicoController extends Controller
         ]);
         return response()->json([
             "success" => true,
-            "message" => "usuario cadastrado com sucesso",
-            "data" => $usuario
+            "message" => " cadastrado com sucesso",
+            "data" => $servico
         ], 200);
     }
     public function pesquisarPorNome(Request $request)
     {
-        $usuario = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
-        if (count($usuario) > 0) {
+        $servico = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
+        if (count($servico) > 0) {
             return response()->json([
                 'status' => true,
-                'data' => $usuario
+                'data' => $servico
             ]);
         }
 
@@ -42,38 +42,38 @@ class ServicoController extends Controller
     }
     public function exibirTodosServico()
     {
-        $usuario = Servico::all();
+        $servico = Servico::all();
         return response()->json([
             'status' => true,
-            'data' => $usuario
+            'data' => $servico
         ]);
     }
     public function editarServiço(Request $request)
     {
-        $usuario = Servico::find($request->id);
+        $servico = Servico::find($request->id);
 
-        if (!isset($usuario)) {
+        if (!isset($servico)) {
             return response()->json([
                 'status' => false,
                 'massage' => "Serviço não encontrado"
             ]);
         }
         if (isset($request->nome)) {
-            $usuario->nome = $request->nome;
+            $servico->nome = $request->nome;
         }
         if (isset($request->descricao)) {
-            $usuario->descricao = $request->descricao;
+            $servico->descricao = $request->descricao;
         }
 
         if (isset($request->duracao)) {
-            $usuario->duracao = $request->duracao;
+            $servico->duracao = $request->duracao;
         }
 
         if (isset($request->preco)) {
-            $usuario->preco = $request->preco;
+            $servico->preco = $request->preco;
         }
 
-        $usuario->update();
+        $servico->update();
         return response()->json([
             'status' => true,
             'message' => "Serviço atualizado"
@@ -82,19 +82,33 @@ class ServicoController extends Controller
 
     public function excluir($id)
     {
-        $usuario = Servico::find($id);
+        $servico = Servico::find($id);
 
-        if (!isset($usuario)) {
+        if (!isset($servico)) {
             return response()->json([
                 'status' => false,
                 'massage' => "serviço não encontrado"
             ]);
         }
-        $usuario->delete();
+        $servico->delete();
 
         return response()->json([
             'status' => true,
             'message' => "Serviço excluido com sucesso"
         ]);
     }
+    public function pesquisarPorId($id){
+        $servico = Servico::find($id);
+        if($servico == null){
+            return response()->json([
+                'status'=>false,
+                'message'=> "servico não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status'=>true,
+            'data'=> $servico
+        ]);
+
+        } 
 }

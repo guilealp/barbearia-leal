@@ -203,4 +203,18 @@ class ClienteController extends Controller
             'message' => "Senha atualizado"
         ]);
     }
+    public function pesquisarPorId($id){
+        $clientes = Cliente::find($id);
+        if($clientes == null){
+            return response()->json([
+                'status'=>false,
+                'message'=> "cliente não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status'=>true,
+            'data'=> $clientes
+        ]);
+
+        } 
 }
