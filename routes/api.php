@@ -24,11 +24,11 @@ route::post('find/serviço',[ServicoController::class,'pesquisarPorNome']);
 
 route::get('serviço/all',[ServicoController::class,'exibirTodosServico']);
 
-route::put('editar',[ServicoController::class,'editar']);
+route::put('editar',[ServicoController::class,'editarServiço']);
 
 Route::delete('serviço/excluir/{id}',[ServicoController::class, 'excluir']);
 
-route::post('find/serviço/{id}',[ServicoController::class, 'pesquisarPorId']);
+route::get('find/serviço/{id}',[ServicoController::class, 'pesquisarPorId']);
 //clientes
 route::post('cliente',[ClienteController::class,'clienteCreate']);
 
@@ -38,15 +38,10 @@ route::put('editar/cliente',[ClienteController::class, 'editarCliente']);
 
 Route::delete('cliente/excluir/{id}',[ClienteController::class, 'excluirCliente']);
 
-route::post('find/cliente/{id}',[ClienteController::class, 'pesquisarPorId']);
+route::get('find/cliente/{id}',[ClienteController::class, 'pesquisarPorId']);
 
 route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
 
-route::post('find/cliente',[ClienteController::class, 'procurarPorCpf']);
-
-route::post('find/cliente',[ClienteController::class, 'procurarPorCelular']);
-
-route::post('find/cliente',[ClienteController::class, 'procurarPorEmail']);
 
 route::post('recuperar/senha',[ClienteController::class, 'recuperarSenha']);
 
@@ -56,13 +51,13 @@ route::post('profissional',[ProfissionalController::class, 'criarProfissional'])
 
 route::post('find/profissional',[ProfissionalController::class, 'procurarPorNomeProfissional']);
 
-route::post('find/profissional/{id}',[ProfissionalController::class, 'pesquisarPorId']);
+route::get('find/profissional/{id}',[ProfissionalController::class, 'pesquisarPorId']);
 
-route::post('find/profissional',[ProfissionalController::class, 'procurarPorCpfProfissional']);
+route::post('find/profissional/cpf',[ProfissionalController::class, 'procurarPorCpfProfissional']);
 
-route::post('find/profissional',[ProfissionalController::class, 'procurarPorCelularProfissional']);
+route::post('find/profissional/celular',[ProfissionalController::class, 'procurarPorCelularProfissional']);
 
-route::post('find/profissional',[ProfissionalController::class, 'procurarPorEmailProfissional']);
+route::post('find/profissional/email',[ProfissionalController::class, 'procurarPorEmailProfissional']);
 
 route::get('Profissional/all',[ProfissionalController::class, 'exibirTodosProfissional']);
 
