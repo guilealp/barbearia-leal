@@ -67,4 +67,12 @@ Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'exclu
 
 //Agenda
 
-route::post( 'Agenda',[AgendaController::class , 'CadastroAgenda']);
+route::post( 'Agenda',[AgendaController::class , 'cadastrarAgenda']);
+
+route::get( 'Agenda/all',[AgendaController::class , 'retornarTodosAgenda']);
+
+route::post( 'Agenda/pesquisar', [AgendaController::class , 'pesquisarPorAgenda']);
+
+route::delete( 'Agenda/excluir/{id}', [AgendaController::class , 'excluirAgenda']);
+
+route::put( 'agenda/atualizar', [AgendaController::class , 'atualizarAgenda']);

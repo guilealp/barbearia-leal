@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
-   public function store(AgendaFormRequest $request){
+   public function cadastrarAgenda(AgendaFormRequest $request){
         $agendas = Agenda::create([
             'profissional_id' => $request->profissional_id,
+            'cliente_id' => $request->cliente_id,
             'agenda_id' => $request->agenda_id,
             'servico_id'=>$request->servico_id,
             'data_hora'=>$request->data_hora,
@@ -27,7 +28,7 @@ class AgendaController extends Controller
         ],200);
     }
 
-    public function retornarTodos()
+    public function retornarTodosAgenda()
     {
         $agendas = Agenda::all();
         return response()->json([
@@ -56,13 +57,13 @@ class AgendaController extends Controller
    
     }
 
-    public function excluir($id){
+    public function excluirAgenda($id){
         $agenda = Agenda::find($id);
    
         if(!isset($agenda)){
             return response()->json([
                 'status' => false,
-                'message' => "Cadastro não encotrado"
+                'message' => "agendamento não encotrado"
             ]);
         }
    
@@ -70,17 +71,17 @@ class AgendaController extends Controller
    
         return response()->json([
             'status' => true,
-            'message' => "Cadastro excluido com sucesso"
+            'message' => "agendamento excluido com sucesso"
         ]);
     }
 
-    public function update(Request $request){
+    public function atualizarAgenda(Request $request){
         $agendas = agenda::find($request->id);
    
         if(!isset($agendas)){
             return response()->json([
                 'status' => false,
-                'message' => "Cadastro não encontrado"
+                'message' => "agendamento não encontrado"
             ]);
         }
    
@@ -108,7 +109,7 @@ class AgendaController extends Controller
    
         return response()->json([
             'status' => true,
-            'message' => "Cadastro atualizado"
+            'message' => "agendamento atualizado"
         ]);
    
     }
