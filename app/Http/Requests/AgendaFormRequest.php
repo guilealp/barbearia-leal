@@ -25,11 +25,7 @@ class AgendaFormRequest extends FormRequest
     {
         return [
             'profissional_id'=>'required',
-            'cliente_id'=>'required',
-            'servico_id'=>'required',
-            'data_hora'=>'required|datetime|unique:datetime',
-            'tipo_pagamento'=>'required',
-            'valor'=>'required|decimal:2'
+            'data_hora'=>'required|date',
         ];
     }
     public function failedValidation(Validator $validator)
@@ -42,14 +38,8 @@ class AgendaFormRequest extends FormRequest
     public function messages(){
         return [
             'profissional_id.required'=>'O campo profissional é obrigatorio',
-            'cliente_id.required'=>'O campo cliente é obrigatorio',
-            'servico_id.required'=>'O campo serviço é obrigatorio',
-            'data_hora.required'=>"O campo data é obrigatorio",
-            'data_hora.datetime'=> 'O campo data esta no formato errado',
-            'data_hora.unique'=> 'O horario ja esta agendado',
-            'tipo_pagamento.required'=>'O campo forma tipo de pagamento é obrigatorio',
-            'valor.required'=>'O campo valor é obrigatorio',
-            'valor.decimal'=>'O campo valor esta no formato errado'
+            'data_hora.date'=> 'O campo data esta no formato errado',
+            'data_hora.unique'=> 'O horario ja esta agendado'
         ];
     }
 }

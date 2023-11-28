@@ -11,12 +11,7 @@ class AgendaController extends Controller
    public function cadastrarAgenda(AgendaFormRequest $request){
         $agendas = Agenda::create([
             'profissional_id' => $request->profissional_id,
-            'cliente_id' => $request->cliente_id,
-            'agenda_id' => $request->agenda_id,
-            'servico_id'=>$request->servico_id,
             'data_hora'=>$request->data_hora,
-            'tipo_pagamento'=>$request->tipo_pagamento,
-            'valor'=>$request->valor,
          
            
         ]);  
@@ -88,20 +83,8 @@ class AgendaController extends Controller
         if(isset($request->profissional_id)){
             $agendas->profissional_id = $request->profissional_id;
         }
-        if(isset($request->agenda_id)){
-            $agendas->agenda_id= $request->agenda_id;
-        }
-        if(isset($request->servico_id)){
-            $agendas->servico_id = $request->servico_id;
-        }
         if(isset($request->data_hora)){
             $agendas->data_hora = $request->data_hora;
-        }
-        if(isset($request->tipo_pagamento)){
-            $agendas->tipo_pagamento = $request->tipo_pagamento;
-        }
-        if(isset($request->valor)){
-            $agendas->valor = $request->valor;
         }
    
    
