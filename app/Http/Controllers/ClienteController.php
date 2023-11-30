@@ -55,10 +55,18 @@ class ClienteController extends Controller
     public function exibirTodosClientes()
     {
         $clientes = Cliente::all();
+        if(count($clientes)> 0){
+            return response()->json([
+                'status' => true,
+                'data' => $clientes
+            ]);
+        }
+
         return response()->json([
-            'status' => true,
-            'data' => $clientes
+            'status' => false,
+            'message' => 'n funciona'
         ]);
+        
     }
     public function editarCliente(ClienteUpdateFormRequest $request)
     {
@@ -187,23 +195,32 @@ class ClienteController extends Controller
             'message' => "Não há resultados para pesquisar"
         ]);
     }
-    public function recuperarSenha(Request $request)
+    public function recuperarSenhaCliente(Request $request)
     {
-        $clientes = Cliente::where('cpf', 'like', '%' . $request->cpf . '%')->get();
 
-        if (!isset($clientes)) {
+        $cliente = Cliente::where('email', '=', $request->email)->first();
+
+        if (!isset($cliente)) {
             return response()->json([
                 'status' => false,
-                'massage' => "Cliente não encontrado"
+                'message' => "Email invalido"
+
             ]);
         }
 
-        $clientes->update(['password' => $request->password]);
+        if (isset($cliente->cpf)) {
+           
+            $cliente->password = Hash::make( $cliente->cpf );
+            
+        }
+        $cliente->update();
+
         return response()->json([
             'status' => true,
-            'message' => "Senha atualizado"
+            'password' => $cliente->password
         ]);
     }
+
     public function pesquisarPorId($id){
         $clientes = Cliente::find($id);
         if($clientes == null){

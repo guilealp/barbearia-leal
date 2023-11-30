@@ -43,7 +43,7 @@ route::get('find/cliente/{id}',[ClienteController::class, 'pesquisarPorId']);
 route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
 
 
-route::post('recuperar/senha',[ClienteController::class, 'recuperarSenha']);
+route::put('recuperar/senha/cliente',[ClienteController::class, 'recuperarSenhaCliente']);
 
 //profissional
 
@@ -65,6 +65,7 @@ route::put('editar/Profissional',[ProfissionalController::class, 'editarProfissi
 
 Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluirProfissional']);
 
+route::put('recuperar/senha/profissional',[ProfissionalController::class, 'recuperarSenhaProfissional']);
 //Agenda
 
 route::post( 'Agenda',[AgendaController::class , 'cadastrarAgenda']);
