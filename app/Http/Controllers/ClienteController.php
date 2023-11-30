@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClienteFormRequest;
+use App\Http\Requests\ClienteUpdateFormRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +60,7 @@ class ClienteController extends Controller
             'data' => $clientes
         ]);
     }
-    public function editarCliente(Request $request)
+    public function editarCliente(ClienteUpdateFormRequest $request)
     {
         $clientes = Cliente::find($request->id);
 

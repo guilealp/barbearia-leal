@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
-class ClienteFormRequest extends FormRequest
+class ClienteUpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,15 +18,15 @@ class ClienteFormRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
             'nome' => 'required|max:120|min:5',
             'celular' => 'required|max:11|min:10',
-            'email' => 'required|max:120|email|unique:clientes,email',
-            'cpf' => 'required|max:11|min:11|unique:clientes,cpf',
+            'email' => 'required|max:120|email',
+            'cpf' => 'required|max:11|min:11',
             'dataNacimento' => 'required',
             'cidade' => 'required|max:120',
             'estado' => "required|max:2|min:2",
@@ -37,7 +36,6 @@ class ClienteFormRequest extends FormRequest
             'bairro' => 'required|max:100',
             'cep' => 'required|max:8|min:8',
             'complemeto' => 'required|max:150',
-            'password' => 'required'
         ];
     }
     public function failedValidation(Validator $validator)
@@ -59,11 +57,9 @@ class ClienteFormRequest extends FormRequest
             'email.required' => 'O campo email é obrigatorio',
             'email.max' => 'o campo email deve conter bo maximo 120 caracteres',
             'email.email' => 'formato de email invalido',
-            'email.unique' => 'Email ja cadastrado no sistema',
             'cpf.required' => 'O campo CPF é obrigatorio',
             'cpf.max' => 'O campo CPF deve conter no maximo 11 caracteres',
             'cpf.min' => 'O campo CPF deve conter no minimo 11 caracteres',
-            'cpf.unique' => 'Esse CPF ja foi cadastrado',
             'dataNacimento.required' => 'Data de nacimento obrigatorio',
             'dataNacimento.date' => 'Formato de data de nacimento invalido',
             'cidade.required' => 'O campo cidade é obrigatorio',
@@ -84,7 +80,6 @@ class ClienteFormRequest extends FormRequest
             'cep.min' => 'O campo CEP deve conter no maximo 8 caracteres',
             'complemeto.required' => 'complemeto é obrigatorio',
             'complemeto.max' => 'O campo complemeto deve conter 150 caracteres',
-            'password.required' => 'password é obrigatorio'
 
         ];
     }

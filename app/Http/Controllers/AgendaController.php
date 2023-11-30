@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AgendaFormRequest;
+use App\Http\Requests\AgendaUpdateFormRequest;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class AgendaController extends Controller
 
    
     public function pesquisarPorAgenda(Request $request){
-        $agendas = Agenda::where('data_hora', '>=', $request->data_hora)->where('profissional_id', '=',  $request->profissional_id)->get();
+        $agendas = Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=',  $request->profissional_id)->get();
    
         if(count($agendas)>0){
             return response()->json([
@@ -70,7 +71,7 @@ class AgendaController extends Controller
         ]);
     }
 
-    public function atualizarAgenda(Request $request){
+    public function atualizarAgenda(AgendaUpdateFormRequest $request){
         $agendas = agenda::find($request->id);
    
         if(!isset($agendas)){

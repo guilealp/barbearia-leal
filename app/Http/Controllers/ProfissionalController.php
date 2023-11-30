@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfissionalFormRequest;
+use App\Http\Requests\ProfissionalUpdateFormRequest;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -110,7 +111,7 @@ class ProfissionalController extends Controller
             'data' => $profissionals
         ]);
     }
-    public function editarprofissional(Request $request)
+    public function editarprofissional(ProfissionalUpdateFormRequest $request)
     {
         $profissionals = Profissional::find($request->id);
 
