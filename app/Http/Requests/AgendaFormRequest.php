@@ -25,7 +25,7 @@ class AgendaFormRequest extends FormRequest
     {
         return [
             'profissional_id'=>'required',
-            'data_hora'=>'required|date',
+            'data_hora'=>'required|date|unique:agendas,date',
         ];
     }
     public function failedValidation(Validator $validator)
