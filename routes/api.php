@@ -40,8 +40,13 @@ Route::delete('cliente/excluir/{id}',[ClienteController::class, 'excluirCliente'
 
 route::get('find/cliente/{id}',[ClienteController::class, 'pesquisarPorId']);
 
-route::post('find/cliente',[ClienteController::class, 'procurarPorNome']);
+route::post('find/cliente/nome',[ClienteController::class, 'procurarPorNome']);
 
+route::post('find/cliente/cpf',[ClienteController::class, 'procurarPorCpf']);
+
+route::post('find/cliente/celular',[ClienteController::class, 'procurarPorCelular']);
+
+route::post('find/cliente/email',[ClienteController::class, 'procurarPorEmail']);
 
 route::put('recuperar/senha/cliente',[ClienteController::class, 'recuperarSenhaCliente']);
 
@@ -49,7 +54,7 @@ route::put('recuperar/senha/cliente',[ClienteController::class, 'recuperarSenhaC
 
 route::post('profissional',[ProfissionalController::class, 'criarProfissional']);
 
-route::post('find/profissional',[ProfissionalController::class, 'procurarPorNomeProfissional']);
+route::post('find/profissional/nome',[ProfissionalController::class, 'procurarPorNomeProfissional']);
 
 route::get('find/profissional/{id}',[ProfissionalController::class, 'pesquisarPorId']);
 
@@ -76,4 +81,4 @@ route::post( 'Agenda/pesquisar', [AgendaController::class , 'pesquisarPorAgenda'
 
 route::delete( 'Agenda/excluir/{id}', [AgendaController::class , 'excluirAgenda']);
 
-route::put( 'agenda/atualizar', [AgendaController::class , 'atualizarAgenda']);
+route::put( 'Agenda/atualizar', [AgendaController::class , 'atualizarAgenda']);

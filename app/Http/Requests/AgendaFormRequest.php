@@ -25,7 +25,7 @@ class AgendaFormRequest extends FormRequest
     {
         return [
             'profissional_id'=>'required',
-            'data_hora'=>'required|date|unique:agendas,date',
+            'data_hora'=>'required|date',
         ];
     }
     public function failedValidation(Validator $validator)
@@ -39,7 +39,6 @@ class AgendaFormRequest extends FormRequest
         return [
             'profissional_id.required'=>'O campo profissional é obrigatorio',
             'data_hora.date'=> 'O campo data esta no formato errado',
-            'data_hora.unique'=> 'O horario ja esta agendado'
         ];
     }
 }
